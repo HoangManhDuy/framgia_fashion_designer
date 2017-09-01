@@ -6,12 +6,12 @@
 }
 .carousel-caption a {
     color: #ac2925;
-    font-size: 120%;
+    font-size: 250%;
     font-family: cursive;
 }
 .carousel-caption a:hover {
     color: #000080;
-    font-size: 135%;
+    font-size: 300%;
 }
 .gal-btm > .col-md-6 img {
     width: 570px;

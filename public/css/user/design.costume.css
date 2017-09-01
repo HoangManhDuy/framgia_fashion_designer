@@ -11,12 +11,16 @@
     width: max-content;
     margin-left: -30px;
     text-transform: capitalize;
-    transition: color 1s;
+    transition: color 3s, font-size 4s;
     margin-bottom: 15px;
 }
 
-.select-title h2:hover, .boundary:hover {
+.boundary h3 {
+    transition: color 3s, font-size 3s;
+}
+.select-title h2:hover, .boundary h3:hover {
     color: red;
+    font-size: 160% ;
 }
 
 .boundary {

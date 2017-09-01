@@ -60,8 +60,9 @@ class StyleController extends Controller
     {
         $listTopic = $this->topic->get();
         $listStyle = $this->style->get();
+        $current_topic = $this->topic->get;
 
-        return view('frontend.style.stylepage', compact(['listTopic', 'listStyle']));
+        return view('frontend.style.stylepage', compact(['listTopic', 'listStyle', 'current_topic']));
     }
 
     public function postStyle(Request $request)

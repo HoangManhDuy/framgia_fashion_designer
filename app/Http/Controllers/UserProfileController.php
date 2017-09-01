@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Costume;
 use App\Helpers\HelpText;
 use Hash;
 use Response;
@@ -13,12 +14,15 @@ use Auth;
 class UserProfileController extends Controller
 {
     protected $user_information;
+    protected $costume;
 
     public function __construct(
-        User $user_information
+        User $user_information,
+        Costume $costume
     )
     {
         $this->user_information = $user_information;
+        $this->costume = $costume;
     }
 
     public function profile()
@@ -27,9 +31,12 @@ class UserProfileController extends Controller
 
             return redirect()->route('home');
         }
+        $iduser = User::find(Auth::User()->id)->id;
         $users = $this->user_information->get();
+        $costumes =  $this->costume->where('user_id', '=', $iduser)
+            ->orderBy('id', 'desc')->paginate(5);
 
-        return view('frontend.users.profiles', compact('categories', 'users'));
+        return view('frontend.users.profiles', compact('categories', 'users', 'costumes'));
     }
 
     public function editUserInformation(Request $request)

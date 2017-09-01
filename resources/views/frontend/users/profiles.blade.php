@@ -59,6 +59,10 @@
                     <div class="block">
                         <div class="block-title">
                             <h2>{{ __('topic has joined') }}</h2>
+                            <hr>
+                        </div>
+                        <div class="block-content">
+
                         </div>
                     </div>
                 </div>
@@ -66,6 +70,33 @@
                     <div class="block">
                         <div class="block-title">
                             <h2>{{ __('the costumes are designed') }}</h2>
+                            <hr>
+                        </div>
+                        <div class="block-content">
+                            <ul class="event-list">
+                                @foreach($costumes as $costume)
+                                    <li>
+                                        <div class="info">
+                                            <h2 class="title">{!! $costume->name !!}</h2>
+                                            <p class="desc">{!! $costume->description !!}</p>
+                                            <a href="#">{{ __('Chi tiết') }}</a>
+                                            <ul>
+                                                <li class="item-rate"><span class="fa fa-heart"></span>Like</li>
+                                                <li class="item-rate">
+                                                    <div id="stars-existing" class="starrr" data-rating='4'>
+                                                        <id class="fa fa-star"></id>
+                                                        <id class="fa fa-star"></id>
+                                                        <id class="fa fa-star"></id>
+                                                        <id class="fa fa-star-o"></id>
+                                                        Rate
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            </ul>
+                            <div class="col-lg-12" id="page-paginate">{{ $costumes->links('frontend.components.paginate-review') }}</div>
                         </div>
                     </div>
                 </div>
@@ -254,3 +285,6 @@
     <!-- //Profile -->
 @endsection('content')
 
+@section('script')
+    {{--{{ Html::script('/js/search.js', ['type' => 'text/javascript']) }}--}}
+@endsection('script')
